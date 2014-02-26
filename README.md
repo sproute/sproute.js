@@ -4,9 +4,7 @@ This library contains helper functions to interact with the [REST API](http://ge
 
 It is available to all Sproute Spaces under `http://<mysubdomain>.sproute.io/assets/sproute.min.js`.
 
-### REST
-
-#### [`Sproute.get(model)`](https://getsproute.com/docs/rest#datamodel)
+### [Sproute.get(model)](https://getsproute.com/docs/rest#datamodel)
 
 Make a get request for a given model.
 
@@ -34,7 +32,7 @@ If one result is returned, return the object instead of a single element array.
 
 Run the request and execute the callback function. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
 
-#### [`Sproute.post(model)`](https://getsproute.com/docs/rest#post)
+### [Sproute.post(model)](https://getsproute.com/docs/rest#post)
 
 Make a post request for a given model.
 
