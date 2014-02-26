@@ -32,7 +32,7 @@ If one result is returned, return the object instead of a single element array.
 
 Run the request and execute the callback function on completion or error. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
 
-~~~
+~~~javascript
 Sproute
 	.get("articles")
 	.sort("_created")
@@ -61,7 +61,7 @@ The data to post to the end point. Will be stringified before sending as `applic
 
 Run the request and execute the callback function on completion or error. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
 
-~~~
+~~~javascript
 Sproute
 	.post("articles")
 	.data({title: "New article", body: "Test body"})
