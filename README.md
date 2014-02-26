@@ -30,7 +30,7 @@ If one result is returned, return the object instead of a single element array.
 
 ##### `.end(callback)`
 
-Run the request and execute the callback function. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
+Run the request and execute the callback function on completion or error. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
 
 ### [Sproute.post(model)](https://getsproute.com/docs/rest#post)
 
@@ -46,4 +46,24 @@ The data to post to the end point. Will be stringified before sending as `applic
 
 ##### `.end(callback)`
 
-Run the request and execute the callback function. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
+Run the request and execute the callback function on completion or error. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
+
+### [Sproute.signUp(user)](https://getsproute.com/docs/users#post-apiregister) *alias: register*
+
+Will create a new user with the user object provided. If you have extended the user model, include the data in the object.
+
+### [Sproute.signIn(user)](https://getsproute.com/docs/users#post-apilogin) *alias: login*
+
+Create a session on the server for a user. If they are already logged in, an error will be returned.
+
+### [Sproute.changePassword(old, new)](https://getsproute.com/docs/users#post-apiupdate)
+
+Allow a user to update their password. Must include their current password for security reasons.
+
+### [Sproute.isLogged()](https://getsproute.com/docs/users#get-apilogged)
+
+Returns the object of the user logged or `false` if not logged in.
+
+### [Sproute.signOut()](https://getsproute.com/docs/users#get-apilogout) *alias: logout*
+
+Sending a GET request to this URL will logout the currently logged in user.

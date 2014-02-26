@@ -57,7 +57,7 @@
 			if (this.query.length) {
 				url += "?" + this.query.join("&");
 			}
-			
+
 			this.xhr.open(this.method, url);
 			this.xhr.setRequestHeader("Accept", "application/json");
 			this.xhr.onreadystatechange = function () {
@@ -136,6 +136,73 @@
 			this.xhr.send(JSON.stringify(this.data));
 		}
 	}
+
+	Sproute.isLogged = function () {
+		var xhr = new XMLHttpRequest;
+		xhr.open("GET", "/api/logged", false);
+		xhr.send();
+
+		var data = false;
+		try {
+			data = JSON.parse(xhr.responseText);
+		} catch (e) {}
+
+		return data;
+	};
+
+	Sproute.signUp = function (user) {
+		var xhr = new XMLHttpRequest;
+		xhr.open("POST", "/api/register", false);
+		xhr.send(JSON.stringify(user));
+
+		var data = false;
+		try {
+			data = JSON.parse(xhr.responseText);
+		} catch (e) {}
+
+		return data;
+	};
+
+	Sproute.signIn = function (user) {
+		var xhr = new XMLHttpRequest;
+		xhr.open("POST", "/api/login", false);
+		xhr.send(JSON.stringify(user));
+
+		var data = false;
+		try {
+			data = JSON.parse(xhr.responseText);
+		} catch (e) {}
+
+		return data;
+	};
+
+	Sproute.signOut = function () {
+		var xhr = new XMLHttpRequest;
+		xhr.open("GET", "/api/logout", false);
+		xhr.send();
+
+		return true;
+	};
+
+	Sproute.changePassword = function (old, pass) {
+		var xhr = new XMLHttpRequest;
+		xhr.open("POST", "/api/update", false);
+		xhr.send(JSON.stringify({
+			pass: old,
+			newpass: pass
+		}));
+
+		var data = false;
+		try {
+			data = JSON.parse(xhr.responseText);
+		} catch (e) {}
+
+		return data;
+	};
+
+	Sproute.register = Sproute.signUp;
+	Sproute.login = Sproute.signIn;
+	Sproute.logout = Sproute.signOut;
 
 	window.Sproute = Sproute;
 })(window);
