@@ -32,6 +32,19 @@ If one result is returned, return the object instead of a single element array.
 
 Run the request and execute the callback function on completion or error. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
 
+~~~
+Sproute
+	.get("articles")
+	.sort("_created")
+	.end(function (err, data) {
+		if (err) { alert("Uh oh!"); }
+
+		for (var i = 0; i < data.length; ++i) {
+			var row = data[i];
+		}
+	});
+~~~
+
 ### [Sproute.post(model)](https://getsproute.com/docs/rest#post)
 
 Make a post request for a given model.
@@ -47,6 +60,13 @@ The data to post to the end point. Will be stringified before sending as `applic
 ##### `.end(callback)`
 
 Run the request and execute the callback function on completion or error. The arguments passed into the callback will be `err`, `body`. If no error occurs, it will be `null`.
+
+~~~
+Sproute
+	.post("articles")
+	.data({title: "New article", body: "Test body"})
+	.end()
+~~~
 
 ### [Sproute.signUp(user)](https://getsproute.com/docs/users#post-apiregister) *alias: register*
 
