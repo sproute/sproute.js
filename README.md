@@ -2,7 +2,7 @@
 
 This library contains helper functions to interact with the [REST API](http://getsproute.com/docs/rest) as well as [user accounts](http://getsproute.com/docs/users) for [Sproute spaces](http://getsproute.com). 
 
-It is available to all Sproute Spaces under `http://<mysubdomain>.sproute.io/assets/sproute.min.js`.
+It is available to all Sproute Spaces under `http://<mysubdomain>.sproute.io/assets/js/Sproute.min.js` (remove `.min` for the development version).
 
 ### [Sproute.get(model)](https://getsproute.com/docs/rest#datamodel)
 
