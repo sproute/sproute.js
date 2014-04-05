@@ -6,6 +6,10 @@
 
 		post: function (model) {
 			return new PostRequest(model);
+		},
+
+		"delete": function (model) {
+			return new DeleteRequest(model);	
 		}
 	};
 
@@ -134,6 +138,50 @@
 			}
 
 			this.xhr.send(JSON.stringify(this.data));
+		}
+	}
+
+	function DeleteRequest (model) {
+		this.model = model;
+		this.url = "";
+		this.method = "DELETE";
+
+		this.xhr = new XMLHttpRequest;
+	}
+
+	DeleteRequest.prototype = {
+		where: function (field, value) {
+			this.url = field + "/" + value;
+			return this;
+		},
+
+		end: function (callback) {
+			var url = "/data/" + this.model + "/" + this.url;
+			this.xhr.open(this.method, url);
+			
+			this.xhr.onreadystatechange = function () {
+				if (this.xhr.readyState == 4 && this.xhr.status) {
+					var data = null;
+					try {
+						data = JSON.parse(this.xhr.responseText);
+					} catch (e) {
+						data = null;
+					}
+
+					callback && callback(
+						(this.xhr.status === 200 ? null : this.xhr), 
+						data
+					);
+				}
+			}.bind(this);
+
+			this.xhr.onerror = function (err) {
+				callback && callback({
+					status: 0
+				});
+			}
+
+			this.xhr.send();
 		}
 	}
 
